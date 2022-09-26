@@ -119,6 +119,7 @@ async function computer_shot(){
                     confirmed_grid[place[1]][place[0]] = "x"
                     players_destroyed_cells++
                 }
+                players_destroyed_cells--
                 show_grid(confirmed_grid,ctx)
                 computer_found_last_direction = false
                 computer_found_new_direction = false
@@ -180,6 +181,7 @@ async function computer_shot(){
                     confirmed_grid[place[1]][place[0]] = "x"
                     players_destroyed_cells++
                 }
+                players_destroyed_cells--
                 show_grid(confirmed_grid,ctx)
                 computer_found_last_direction = false
                 computer_found_new_direction = false
@@ -241,6 +243,7 @@ async function computer_shot(){
                     confirmed_grid[place[1]][place[0]] = "x"
                     players_destroyed_cells++
                 }
+                players_destroyed_cells--;
                 show_grid(confirmed_grid,ctx)
                 computer_found_last_direction = false
                 computer_found_new_direction = false
@@ -301,6 +304,7 @@ async function computer_shot(){
                     confirmed_grid[place[1]][place[0]] = "x"
                     players_destroyed_cells++
                 }
+                players_destroyed_cells--
                 show_grid(confirmed_grid,ctx)
                 computer_found_last_direction = false
                 computer_found_new_direction = false
@@ -346,7 +350,7 @@ async function computer_shot(){
         }
         if (confirmed_grid[y2][x2] === "O"){
             confirmed_grid[y2][x2] = "x"
-            
+            players_destroyed_cells++
             current_aim_cell = []
             current_aim_cell.push([x2,y2])
             computer_found_new_ship = true
@@ -364,7 +368,6 @@ async function computer_shot(){
     } else{
         await delay(shot_time);
         if (shooting_directions.length === 0){
-            players_destroyed_cells++
             previous_written_position2 = [y2,x2]
             grid = ban_place(confirmed_grid,y2,x2,previous_written_position2,"f")
             confirmed_grid = make_full_copy_of_grid(grid)
